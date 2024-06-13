@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Avatar from "../icons/Avatar.svg";
 
 function AsesorDetailsPage() {
   const { id } = useParams();
   const [asesor, setAsesor] = useState(null);
+  const navigate = useNavigate();
 
-  const token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBlZHVjb25uZWN0LmNvbSIsImF1dGhvcml0aWVzIjoiQURNSU4iLCJleHAiOjE3MTg0MDI1NTd9.Dpxtmjyrq_2a6ptCdTdKv-JcgAhNkIxR49b9rfaRxeEbHmzE8cfba9l-f46eY3mjmZ_Z1ozypJtm5zBKD5DFOQ'
 
   useEffect(() => {
     const fetchAsesor = async () => {
@@ -22,8 +22,10 @@ function AsesorDetailsPage() {
           }
         );
         setAsesor(response.data);
+        // navigate('/administrarAsesores')
       } catch (error) {
         console.error("Error fetching asesor details:", error);
+        // console.error("Error fetching asesor details:", error);
       }
     };
     fetchAsesor();
@@ -31,25 +33,27 @@ function AsesorDetailsPage() {
 
   const handleAceptar = async () => {
     try {
-    //   const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
       await axios.put(
         `http://localhost:8080/admin/asesores/${id}/aprobar`,
+        null,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
+      navigate('/administrarAsesores')
       console.log("Asesor aprobado:", asesor.idAsesor);
     } catch (error) {
-        console.log(token);
+        // console.log(token);
       console.error("Error al aprobar asesor:", error);
     }
   };
 
   const handleRechazar = async () => {
     try {
-    //   const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
       await axios.put(
         `http://localhost:8080/admin/asesores/${id}/rechazar`,
         null,
@@ -58,7 +62,9 @@ function AsesorDetailsPage() {
             Authorization: `Bearer ${token}`,
           },
         }
+
       );
+      navigate('/administrarAsesores')
 
       console.log("Asesor rechazado:", asesor.idAsesor);
     } catch (error) {
