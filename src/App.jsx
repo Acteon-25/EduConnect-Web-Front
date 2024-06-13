@@ -15,6 +15,8 @@ import AdministracionUsuariosPage from "./pages/AdministracionUsuariosPage"
 import AdministrarAsesoresPage from "./pages/AdministrarAsesoresPage"
 import MeetingPage from "./pages/MeetingPage"
 import ConfirmarContraPage from "./pages/ConfirmarContraPage"
+import AsesorDetailsPage from './pages/AsesorDetailsPage'
+
 
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
           <Route path="/meeting" element={<MeetingPage />} />
           <Route path="/confirmarContra" element={<ConfirmarContraPage />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/admin/asesores/:id" element={<AsesorDetailsPage />} />
         </Routes>
       </BrowserRouter>
     </>

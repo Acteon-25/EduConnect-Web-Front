@@ -3,15 +3,15 @@ import SideBar from '../components/SideBar'
 import Buscador from '../icons/Buscador.svg'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
-import axios from "axios"
+// import axios from "axios"
 
-const token = localStorage.getItem("token")
-const res = await axios.get("http://localhost:8080/estudiantes/perfil", {
-  headers: {
-    'Authorization': `Bearer ${token}`
-  }
-})
-const nameUser = res.data.nombre
+// const token = localStorage.getItem("token")
+// const res = await axios.get("http://localhost:8080/estudiantes/perfil", {
+//   headers: {
+//     'Authorization': `Bearer ${token}`
+//   }
+// })
+// const nameUser = res.data.nombre
 
 const LoginUserPage = () => {
 

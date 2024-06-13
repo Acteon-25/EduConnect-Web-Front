@@ -23,13 +23,8 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:8080/login', details);
       const token = response.data;
       localStorage.setItem('token', token);
-      const res = await axios.get("http://localhost:8080/estudiantes/perfil", {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      const ruta = res.data.idUsuario
-      navigate(`/login/${ruta}`) // Arreglar Navigate con otro comando para que reinicie la pagina
+      console.log(token);
+      navigate('/')
 
     } catch (e) {
       alert("Credenciales Incorrectas")
