@@ -16,6 +16,8 @@ import AdministrarAsesoresPage from "./pages/AdministrarAsesoresPage"
 import MeetingPage from "./pages/MeetingPage"
 import ConfirmarContraPage from "./pages/ConfirmarContraPage"
 import AsesorDetailsPage from './pages/AsesorDetailsPage'
+import IngresarCalificacion from './pages/IngresarCalificacion'
+import PerfilUsuario from './pages/PerfilUsuario'
 
 
 
@@ -43,6 +45,9 @@ function App() {
           <Route path="/confirmarContra" element={<ConfirmarContraPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/admin/asesores/:id" element={<AsesorDetailsPage />} />
+          <Route path="/asesor/ingresarCalificacion" element={<IngresarCalificacion />} />
+          <Route path="/usuario/perfilUsuario/:id" element={<PerfilUsuario />} />
+
         </Routes>
       </BrowserRouter>
     </>
