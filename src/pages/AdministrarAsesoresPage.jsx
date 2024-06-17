@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom'
 import SideBar from '../components/SideBar'
 import Notification from '../icons/Notification.svg'
 import Foto from '../img/Foto.png'
+import AsesorList from '../components/AsesorList'
+
 
 const AdministrarAsesoresPage = () => {
 
@@ -25,40 +27,13 @@ const AdministrarAsesoresPage = () => {
         </div>
       </div>
 
+
       <div className='grid grid-cols-1 place-items-center w-screen'>
         <h3 className='text-3xl'>Administracion de solicitudes de Asesores</h3>
-        <ul className='flex flex-col gap-4'>
-          <li className='flex gap-4 my-5'>
-            <h4 className='text-xl font-bold'>Asesor 1</h4>
-            <button className='bg-yellow-500 rounded-xl py-1 px-3'>Revisar documentos</button>
-            <button className='bg-green-500 rounded-xl py-1 px-3'>Aceptar Asesor</button>
-            <button className='bg-red-500 rounded-xl py-1 px-3'>Rechazar Asesor</button>
-          </li>
-          <li className='flex gap-4 my-5'>
-            <h4 className='text-xl font-bold'>Asesor 2</h4>
-            <button className='bg-yellow-500 rounded-xl py-1 px-3'>Revisar documentos</button>
-            <button className='bg-green-500 rounded-xl py-1 px-3'>Aceptar Asesor</button>
-            <button className='bg-red-500 rounded-xl py-1 px-3'>Rechazar Asesor</button>
-          </li>
-          <li className='flex gap-4 my-5'>
-            <h4 className='text-xl font-bold'>Asesor 3</h4>
-            <button className='bg-yellow-500 rounded-xl py-1 px-3'>Revisar documentos</button>
-            <button className='bg-green-500 rounded-xl py-1 px-3'>Aceptar Asesor</button>
-            <button className='bg-red-500 rounded-xl py-1 px-3'>Rechazar Asesor</button>
-          </li>
-          <li className='flex gap-4 my-5'>
-            <h4 className='text-xl font-bold'>Asesor 4</h4>
-            <button className='bg-yellow-500 rounded-xl py-1 px-3'>Revisar documentos</button>
-            <button className='bg-green-500 rounded-xl py-1 px-3'>Aceptar Asesor</button>
-            <button className='bg-red-500 rounded-xl py-1 px-3'>Rechazar Asesor</button>
-          </li>
-          <li className='flex gap-4 my-5'>
-            <h4 className='text-xl font-bold'>Asesor 5</h4>
-            <button className='bg-yellow-500 rounded-xl py-1 px-3'>Revisar documentos</button>
-            <button className='bg-green-500 rounded-xl py-1 px-3'>Aceptar Asesor</button>
-            <button className='bg-red-500 rounded-xl py-1 px-3'>Rechazar Asesor</button>
-          </li>
-        </ul>
+        <br />
+
+        <AsesorList />
+        
       </div>
     </div>
   )
