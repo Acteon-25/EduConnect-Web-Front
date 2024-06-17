@@ -5,10 +5,10 @@ import SectionContainer from "../components/SectionContainer";
 import axios from "axios"
 import { useState } from "react";
 
-const tokenRestablecimiento = localStorage.getItem("token2")
 
 const ConfirmarContraPage = () => {
   const navigate = useNavigate()
+  const tokenRestablecimiento = localStorage.getItem("token2")
 
   const [contrasena, setContrasena] = useState();
 

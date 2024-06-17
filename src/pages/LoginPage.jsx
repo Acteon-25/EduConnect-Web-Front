@@ -12,7 +12,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState();
   const [contrasena, setContrasena] = useState();
 
-
   async function login() {
     try {
       const details = {
