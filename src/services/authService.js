@@ -1,11 +1,11 @@
 import api from './api';
 
 const authService = {
-  login: async (email, password) => {
+  login: async (correoElectronico, contrasena) => {
     try {
-      const response = await api.post('/login', { correoElectronico: email, contrasena: password });
+      const response = await api.post('/login', { correoElectronico, contrasena });
       const { token, usuario } = response.data;
-      localStorage.setItem('token', token); 
+      localStorage.setItem('token', token);
       return usuario;
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Error al iniciar sesión');
@@ -25,23 +25,26 @@ const authService = {
     localStorage.removeItem('token');
   },
 
-
   getCurrentUser: async () => {
-    try {
-      const response = await api.get('/usuarios/current'); 
-      return response.data;
-    } catch (error) {
-
-      console.error('Error al obtener el usuario actual:', error);
-      authService.logout();
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const response = await api.get('/usuarios/current');
+        return response.data;
+      } catch (error) {
+        console.error('Error al obtener el usuario actual:', error);
+        authService.logout();
+        return null;
+      }
+    } else {
       return null;
     }
   },
 
   isAuthenticated: () => {
     const token = localStorage.getItem('token');
-    return !!token;
-  },
+    return !!token; 
+  }
 };
 
-export default authService;
+export default authService;

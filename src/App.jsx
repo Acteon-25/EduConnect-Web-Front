@@ -24,7 +24,7 @@ import MiMembresiaPage from './pages/MiMembresiaPage';
 import authService from "./services/authService";
 
 function App() {
-  const { user, setUser, login, logout, getCurrentUser } = useContext(AuthContext);
+  const { user, setUser, login, logout, updateAuthStatus } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -46,9 +46,8 @@ function App() {
   if (isLoading) {
     return <div>Cargando...</div>;
   }
-
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, isLoading, setIsLoading }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -70,7 +69,7 @@ function App() {
           <Route element={<PrivateRoute allowedRoles={['ASESOR']} />}>
             <Route path="/editProfile" element={<EditProfilePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-           
+            
             {/* ... otras rutas protegidas para asesores */}
           </Route>
 

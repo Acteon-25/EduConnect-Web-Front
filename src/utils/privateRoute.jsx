@@ -1,19 +1,13 @@
 import React, { useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
-function PrivateRoute({ allowedRoles }) {
-  const { user, isAuthenticated } = useContext(AuthContext);
+function PrivateRoute({ allowedRoles, children }) {
+  const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? (
-    allowedRoles.includes(user.tipoUsuario) ? (
-      <Outlet />
-    ) : (
-      <Navigate to="/" replace /> 
-    )
-  ) : (
-    <Navigate to="/login" replace /> 
-  );
+  const hasRequiredRole = allowedRoles.includes(user?.tipoUsuario); 
+
+  return isAuthenticated && hasRequiredRole ? children : <Navigate to="/login" replace />;
 }
 
 export default PrivateRoute;
